@@ -39,8 +39,8 @@ interface Gender {
 
 const sport: Game[]  = [
     { id: 1, name: "Football" },
-    { id: 2, name: "Basketball"},
-    { id: 3, name: "Soccer"},
+    // { id: 2, name: "Basketball"},
+    // { id: 3, name: "Soccer"},
     // { id: 4, name: 'Lacrosse' },
     // { id: 5, name: 'FieldHockey' },
     // { id: 6, name: 'Track and Field' },
@@ -62,13 +62,13 @@ const plans: Gender[] = [
 const graphics = [
     {
         id: 1,
-        name: "ESPN",
+        name: "ESPN STYLE",
         description: "Inspired by the work of Kelly Bowmaster.",
         difficulty: "Easy",
     },
     {
         id: 2,
-        name: "HERO",
+        name: "HERO STYLE ARRIVING SOON.",
         description: "Inspired by the work of Kerry Nevins.",
         difficulty: "Easy",
     },
@@ -291,20 +291,20 @@ export default function DemoPage() {
                                         Select a graphic type.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        We have hundreds of graphic presets. Choose a type to get
-                                        started.
+                                        We are planning on having hundreds of graphic presets. Only one type for now.
                                     </p>
                                     <div>
                                         <RadioGroup
                                             value={selectedType}
                                             onChange={setSelectedType}>
                                             <RadioGroup.Label className="sr-only">
-                                                Server size
+                                                Graphics
                                             </RadioGroup.Label>
                                             <div className="space-y-4">
                                                 {graphics.map((graphic) => (
                                                     <RadioGroup.Option
                                                         key={graphic.name}
+                                                        disabled
                                                         value={graphic}
                                                         className={({ checked, active }) =>
                                                             classNames(
@@ -453,8 +453,7 @@ export default function DemoPage() {
                                         Select University.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        Choose your college. You can always try again with another
-                                        one.
+                                        Choose your college. More URLs being mapped soon.
                                     </p>
                                     <div className="z-2 w-72">
                                         <Combobox
@@ -597,8 +596,7 @@ export default function DemoPage() {
                                         Select Sport.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        Choose your Sport. You can always try again with another
-                                        one.
+                                        Choose your Sport. Addition sports on the way soon.
                                     </p>
 
                                     <div className="z-2 w-72">
@@ -746,7 +744,7 @@ export default function DemoPage() {
                                         Select Gender.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        Some sports may not include both genders.
+                                        Will soon include both genders. Working to get all football teams in for fall season first.
                                     </p>
                                     <div className="w-full px-4 py-16">
                                         <div className="mx-auto w-full max-w-md">
@@ -754,11 +752,12 @@ export default function DemoPage() {
                                                 value={selectedGender}
                                                 onChange={setSelectedGender}>
                                                 <RadioGroup.Label className="sr-only">
-                                                    Server size
+                                                    Gender
                                                 </RadioGroup.Label>
                                                 <div className="space-y-2">
                                                     {plans.map((plan) => (
                                                         <RadioGroup.Option
+                                                            disabled
                                                             key={plan.name}
                                                             value={plan}
                                                             className={({ active, checked }) =>

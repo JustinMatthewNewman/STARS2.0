@@ -1,17 +1,17 @@
-interface University {
+interface Domain {
     id: number;
     name: string;
   }
 
-const college: University[]  = [ 
+const urls: Domain[]  = [ 
 
-{ id: 1, name: 'Abilene Christian Wildcats' },
-{ id: 2, name: 'Air Force Falcons' },
-{ id: 3, name: 'Akron Zips' },
-{ id: 4, name: 'Alabama Crimson Tide' },
-{ id: 5, name: 'Virginia Military Institute' },
-{ id: 6, name: 'App State Mountaineers' },
-{ id: 7, name: 'Arizona Wildcats' },
+{ id: 1, name: 'acusports.com' },
+{ id: 2, name: 'goairforcefalcons.com' },
+{ id: 3, name: 'gozips.com' },
+{ id: 4, name: 'rolltide.com' },
+{ id: 5, name: 'vmikeydets.com' },
+{ id: 6, name: 'appstatesports.com' },
+{ id: 7, name: 'arizonawildcats.com' },
 // { id: 8, name: 'Arkansas at Little Rock Trojans' },
 // { id: 9, name: 'Arkansas Razorbacks' },
 // { id: 10, name: 'Arkansas State Red Wolves' },
@@ -173,4 +173,4 @@ const college: University[]  = [
 
 ]
 
-export default college;
+export default urls;
