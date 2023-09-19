@@ -1,4 +1,9 @@
-const college = [ 
+interface University {
+    id: number;
+    name: string;
+  }
+
+const college: University[]  = [ 
 
 { id: 1, name: 'Abilene Christian Wildcats' },
 { id: 2, name: 'Air Force Falcons' },

@@ -23,10 +23,24 @@ import { GiSoccerBall } from "react-icons/gi";
 
 import college from "../public/teams";
 
-const sport = [
-    { id: 1, name: "Football", icon: GiAmericanFootballHelmet },
-    { id: 2, name: "Basketball", icon: GiBasketballJersey },
-    { id: 3, name: "Soccer", icon: GiSoccerBall },
+interface University {
+  id: number;
+  name: string;
+}
+
+interface Game {
+  id: number;
+  name: string;
+}
+
+interface Gender {
+  name: string;
+}
+
+const sport: Game[]  = [
+    { id: 1, name: "Football" },
+    { id: 2, name: "Basketball"},
+    { id: 3, name: "Soccer"},
     // { id: 4, name: 'Lacrosse' },
     // { id: 5, name: 'FieldHockey' },
     // { id: 6, name: 'Track and Field' },
@@ -36,7 +50,7 @@ const sport = [
     // { id: 10, name: 'Golf' },
 ];
 
-const plans = [
+const plans: Gender[] = [
     {
         name: "Men",
     },
@@ -235,7 +249,7 @@ export default function DemoPage() {
                                     This App is currently under development. We are working
                                     diligently to convert our initial 1.0 java release to this fully
                                     functional web based platform.
-                                    {" "}
+                                  {" "}
 
                                 </p>
                                 <p>{selectedType.name}</p>
@@ -450,7 +464,7 @@ export default function DemoPage() {
                                                 <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
                                                     <Combobox.Input
                                                         className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
-                                                        displayValue={(college) => college.name}
+                                                        displayValue={(college: University) => college.name}
                                                         onChange={(event) =>
                                                             setQueryOrg(event.target.value)
                                                         }
@@ -488,11 +502,11 @@ export default function DemoPage() {
                                                                         }`
                                                                     }
                                                                     value={college}>
-                                                                    {({ selectedOrg, active }) => (
+                                                                    {({ selected, active }) => (
                                                                         <>
                                                                             <span
                                                                                 className={`block truncate ${
-                                                                                    selectedOrg
+                                                                                  selected
                                                                                         ? "font-medium"
                                                                                         : "font-normal"
                                                                                 }`}>
@@ -595,7 +609,7 @@ export default function DemoPage() {
                                                 <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
                                                     <Combobox.Input
                                                         className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
-                                                        displayValue={(sport) => sport.name}
+                                                        displayValue={(sport: Game) => sport.name}
                                                         onChange={(event) =>
                                                             setQueryOrg(event.target.value)
                                                         }
@@ -634,7 +648,7 @@ export default function DemoPage() {
                                                                     }
                                                                     value={sport}>
                                                                     {({
-                                                                        selectedSport,
+                                                                        selected,
                                                                         active,
                                                                     }) => (
                                                                         <>
