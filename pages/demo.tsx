@@ -193,32 +193,19 @@ export default function DemoPage() {
                 }}
                 className="mt-8 flex flex-col"
               >
-                <div>
-                  <h2 className="text-xl font-semibold text-left text-[#1D2B3A] mb-2">
-                    Transcript
-                  </h2>
-                  <p className="prose prose-sm max-w-none">
-                    {transcript.length > 0
-                      ? transcript
-                      : "Don't think you said anything. Want to try again?"}
-                  </p>
-                </div>
+                
                 <div className="mt-8">
                   <h2 className="text-xl font-semibold text-left text-[#1D2B3A] mb-2">
                     Feedback
                   </h2>
-                  <div className="mt-4 text-sm flex gap-2.5 rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] p-4 leading-6 text-gray-900 min-h-[100px]">
-                    <p className="prose prose-sm max-w-none">
-                      {generatedFeedback}
-                    </p>
-                  </div>
+                  
                 </div>
               </motion.div>
             </div>
           ) : (
             <div className="h-full w-full items-center flex flex-col mt-[10vh]">
                 <div className="w-full flex flex-col max-w-[1080px] mx-auto justify-center">
-                  <p> This App is currently under development. We are working diligently to convert our initial java release to this fully functional web based platform.</p>
+                  <p> This App is currently under development. We are working diligently to convert our initial 1.0 java release to this fully functional web based platform.</p>
                   </div>
             </div>
           )}
