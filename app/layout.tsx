@@ -2,11 +2,11 @@ import "../styles/globals.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Liftoff - AI-Powered Mock Interviews",
+  title: "STARS - Statistics Team Athletic Rendering Software",
   openGraph: {
-    title: "Liftoff - AI-Powered Mock Interviews",
+    title: "STARS - Statistics Team Athletic Rendering Software",
     description:
-      "Liftoff is an AI-powered mock interview platform that helps you practice for your next job interview.",
+      "Auto generate ESPN inspired sports broadcast graphics for your university.",
     images: [
       {
         url: "https://demo.useliftoff.com/opengraph-image",
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Liftoff - AI-Powered Mock Interviews",
+    title: "STARS - Statistics Team Athletic Rendering Software",
     description:
-      "Liftoff is an AI-powered mock interview platform that helps you practice for your next job interview.",
+      "STARS - Statistics Team Athletic Rendering Software",
     images: ["https://demo.useliftoff.com/opengraph-image"],
     creator: "@tmeyer_me",
   },
