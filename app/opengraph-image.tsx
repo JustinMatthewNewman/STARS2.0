@@ -28,7 +28,7 @@ export default async function OG() {
       >
         <img
           src={new URL(
-            "../public/apple-touch-icon.png",
+            "../public/star-icon-9.png",
             import.meta.url
           ).toString()}
           alt="Stars Logo"
