@@ -7,7 +7,7 @@
 </p>
 <br/>
 
-## Introduction
+## [LIVE APP](https://stars-2.vercel.app/)
 
 STARS is a statistics team athletic rendering software.
 
