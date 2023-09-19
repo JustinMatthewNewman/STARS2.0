@@ -75,31 +75,31 @@ export default function DemoPage() {
         <div className="w-full min-h-screen flex flex-col px-4 pt-2 pb-8 md:px-8 md:py-2 bg-[#FCFCFC] relative overflow-x-hidden">
           <p className="absolute w-full top-0 h-[60px] flex flex-row justify-between -ml-4 md:-ml-8">
             <span className="text-sm text-[#1a2b3b] font-medium">
-              Telemedia Productions
+              ESPN level
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20">
               free graphics
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium">
-            Telemedia Productions
+            ESPN level
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20 hidden sm:block">
               free graphics
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium hidden sm:block">
-            Telemedia Productions
+            ESPN level
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20 hidden xl:block">
               free graphics
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20 hidden sm:block">
-            Telemedia Productions
+            ESPN level
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20 hidden sm:block">
               free graphics
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium hidden sm:block">
-            Telemedia Productions
+            ESPN level
             </span>
             <span className="text-sm text-[#1a2b3b] font-medium opacity-20 hidden xl:block">
               free graphics
