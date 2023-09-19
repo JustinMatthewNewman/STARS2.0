@@ -9,7 +9,7 @@ export const metadata: Metadata = {
       "Auto generate ESPN inspired sports broadcast graphics for your university.",
     images: [
       {
-        url: "https://demo.useliftoff.com/opengraph-image",
+        url: "https://google.com",
       },
     ],
   },
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     title: "STARS - Statistics Team Athletic Rendering Software",
     description:
       "STARS - Statistics Team Athletic Rendering Software",
-    images: ["https://demo.useliftoff.com/opengraph-image"],
-    creator: "@tmeyer_me",
+    images: ["https://google.com"],
+    creator: "@newmanjustin",
   },
-  metadataBase: new URL("https://demo.useliftoff.com"),
+  metadataBase: new URL("https://google.com"),
   themeColor: "#FFF",
 };
 
