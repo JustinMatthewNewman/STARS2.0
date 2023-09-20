@@ -7,6 +7,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import toast, { Toaster } from "react-hot-toast";
 import { gradient } from "@/components/Gradient";
+import { useRouter } from 'next/router'
 
 /**
  * React Icons
@@ -36,6 +37,8 @@ interface Game {
 interface Gender {
   name: string;
 }
+
+
 
 const sport: Game[]  = [
     { id: 1, name: "Football" },
@@ -78,7 +81,26 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(" ");
 }
 
+
+
 export default function DemoPage() {
+
+  const router = useRouter()
+
+  function handleNavigation() {
+    router.push({
+      pathname: '/graphics', 
+      query: {
+        type: selectedType.name,
+        org: selectedOrg.name,
+        org_id: selectedOrg.id,
+        sport: selectedSport.name,
+        gender: selectedGender.name
+      }
+    })
+  }
+
+
     /**
      * Background grad
      */
@@ -257,11 +279,13 @@ export default function DemoPage() {
                                 <p>{selectedSport.name}</p>
                                 <p>{selectedGender.name}</p>
                             </div>
+
                             {/**
                              * 
                              * CODE FOR THE RENDERING PROCESS
                              * 
                              */}
+
                         </div>
                     )}
                 </div>
@@ -818,7 +842,7 @@ export default function DemoPage() {
                                         <div>
                                             <button
                                                 onClick={() => {
-                                                    setStep(5);
+                                                  handleNavigation();
                                                 }}
                                                 className="group rounded-full px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#1E2B3A] text-white hover:[linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0D2247] no-underline flex gap-x-2  active:scale-95 scale-100 duration-75"
                                                 style={{
