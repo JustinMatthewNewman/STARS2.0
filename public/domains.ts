@@ -6,8 +6,8 @@ interface Domain {
 const urls: Domain[]  = [ 
 
 { id: 1, name: 'acusports.com' },
-{ id: 2, name: 'goairforcefalcons.com' },
-{ id: 3, name: 'gozips.com' },
+// { id: 2, name: 'goairforcefalcons.com' },
+// { id: 3, name: 'gozips.com' },
 { id: 4, name: 'rolltide.com' },
 { id: 5, name: 'vmikeydets.com' },
 { id: 6, name: 'appstatesports.com' },
@@ -61,7 +61,7 @@ const urls: Domain[]  = [
 // { id: 54, name: 'Indiana Hoosiers' },
 // { id: 55, name: 'Iowa Hawkeyes' },
 // { id: 56, name: 'Iowa State Cyclones' },
-// { id: 57, name: 'James Madison Dukes' },
+{ id: 57, name: 'jmusports.com' },
 // { id: 58, name: 'Kansas Jayhawks' },
 // { id: 59, name: 'Kansas State Wildcats' },
 // { id: 60, name: 'Lehigh Mountain Hawks' },
@@ -170,6 +170,9 @@ const urls: Domain[]  = [
 // { id: 163, name: 'Wisconsin-Milwaukee Panthers' },
 // { id: 164, name: 'Wyoming Cowboys' },
 // { id: 165, name: 'Xavier Musketeer' },
+{id: 166, name: 'tribeathletics.com'}
+
+
 
 ]
 

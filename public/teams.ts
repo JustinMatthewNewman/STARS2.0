@@ -6,8 +6,8 @@ interface University {
 const college: University[]  = [ 
 
 { id: 1, name: 'Abilene Christian Wildcats' },
-{ id: 2, name: 'Air Force Falcons' },
-{ id: 3, name: 'Akron Zips' },
+// { id: 2, name: 'Air Force Falcons' },
+// { id: 3, name: 'Akron Zips' },
 { id: 4, name: 'Alabama Crimson Tide' },
 { id: 5, name: 'Virginia Military Institute' },
 { id: 6, name: 'App State Mountaineers' },
@@ -61,7 +61,7 @@ const college: University[]  = [
 // { id: 54, name: 'Indiana Hoosiers' },
 // { id: 55, name: 'Iowa Hawkeyes' },
 // { id: 56, name: 'Iowa State Cyclones' },
-// { id: 57, name: 'James Madison Dukes' },
+{ id: 57, name: 'James Madison Dukes' },
 // { id: 58, name: 'Kansas Jayhawks' },
 // { id: 59, name: 'Kansas State Wildcats' },
 // { id: 60, name: 'Lehigh Mountain Hawks' },
@@ -170,6 +170,7 @@ const college: University[]  = [
 // { id: 163, name: 'Wisconsin-Milwaukee Panthers' },
 // { id: 164, name: 'Wyoming Cowboys' },
 // { id: 165, name: 'Xavier Musketeer' },
+{id: 166, name: 'William And Mary Tribe'}
 
 ]
 
