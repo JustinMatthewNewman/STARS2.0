@@ -44,13 +44,13 @@ const sport: Game[]  = [
     { id: 1, name: "Football" },
     { id: 2, name: "Basketball"},
     { id: 3, name: "Soccer"},
-    { id: 4, name: 'Lacrosse' },
-    { id: 5, name: 'FieldHockey' },
-    { id: 6, name: 'Track and Field' },
-    { id: 7, name: 'Volleyball' },
-    { id: 8, name: 'Swimming and Diving' },
-    { id: 9, name: 'Tennis' },
-    { id: 10, name: 'Golf' },
+    // { id: 4, name: 'Lacrosse' },
+    // { id: 5, name: 'Field-Hockey' },
+    // { id: 6, name: 'Track-and-Field' },
+    // { id: 7, name: 'Volleyball' },
+    // { id: 8, name: 'Swimming and Diving' },
+    // { id: 9, name: 'Tennis' },
+    // { id: 10, name: 'Golf' },
 ];
 
 const plans: Gender[] = [
