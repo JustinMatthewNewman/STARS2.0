@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import urls from "../public/domains";
 // import Image from 'next/image'
 
-
-
 interface InputData {
     type: string;
     org: string;
@@ -37,7 +35,20 @@ function GetRoster() {
 
     const router = useRouter();
 
-    
+
+      function handleError() {
+        router.push({
+          pathname: '/error', 
+          query: {
+            type: router.query.type as string,
+            org: router.query.org as string,
+            org_id: parseInt(router.query.org_id as string, 10),
+            sport: router.query.sport as string,
+            gender: router.query.gender as string,
+          }
+        })
+      }
+
 
     useEffect(() => {
         if (router.query.type) {
@@ -50,12 +61,12 @@ function GetRoster() {
             };
             setHeader(inputData.org + " " + inputData.sport);
 
-            console.log(inputData)
+            console.log(inputData);
 
             const teamUrl = getSchoolUrl(inputData.org_id);
-            setTeamUrl(teamUrl)
+            setTeamUrl(teamUrl);
 
-            console.log(teamUrl)
+            console.log(teamUrl);
 
             if (teamUrl && !isGetPlayersCalled.current) {
                 // console.log(teamUrl);
@@ -74,11 +85,16 @@ function GetRoster() {
                 isGetPlayersCalled.current = true;
             }
         }
-    }, [router.query]);
+    }, [router.query, getPlayers]);
 
     function buildRosterURL(teamUrl: String, sport: String, gender: String) {
         if (sport === "Football") {
             return "https://" + teamUrl + "/sports/football/roster";
+        }
+        if (gender === "Men") {
+            return "https://" + teamUrl + "/sports/mens-" + sport.toLowerCase() + "/roster";
+        } else {
+            return "https://" + teamUrl + "/sports/womens-" + sport.toLowerCase() + "/roster";
         }
         return "";
     }
@@ -97,7 +113,6 @@ function GetRoster() {
         }
     }
 
-
     async function getPlayers(url: string): Promise<Player[]> {
         try {
             const response = await fetch("/api/parse?url=" + url, {
@@ -106,7 +121,7 @@ function GetRoster() {
             });
 
             if (response.status === 777) {
-                throw new Error("Failed to acquire Player elements. Roster structure differs from General Schema.");
+                handleError();
             }
 
             if (!response.ok) {
@@ -134,18 +149,17 @@ function GetRoster() {
                         <p className="font-bold">{player.name}</p>
 
                         <div className="flex flex-row">
-
-                        <ul className="text-left text-sm ml-8">
-                            <li>NUMBER: {player.number}</li>
-                            <li>POSITION: {player.positionLong}</li>
-                            <li>HEIGHT: {player.height}</li>
-                            <li>WEIGHT: {player.weight}</li>
-                            <li>
-                                FROM: {player.hometown} {player.hs} HS{" "}
-                            </li>
-                            <li>YEAR: {player.year}</li>
-                        </ul>
-                        {/* <Image
+                            <ul className="text-left text-sm ml-8">
+                                <li>NUMBER: {player.number}</li>
+                                <li>POSITION: {player.positionLong}</li>
+                                <li>HEIGHT: {player.height}</li>
+                                <li>WEIGHT: {player.weight}</li>
+                                <li>
+                                    FROM: {player.hometown} {player.hs} HS{" "}
+                                </li>
+                                <li>YEAR: {player.year}</li>
+                            </ul>
+                            {/* <Image
                           src={"https://" + orgUrl + player.image}
                           width={77}
                           height={77}

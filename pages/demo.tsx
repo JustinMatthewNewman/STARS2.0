@@ -42,15 +42,15 @@ interface Gender {
 
 const sport: Game[]  = [
     { id: 1, name: "Football" },
-    // { id: 2, name: "Basketball"},
-    // { id: 3, name: "Soccer"},
-    // { id: 4, name: 'Lacrosse' },
-    // { id: 5, name: 'FieldHockey' },
-    // { id: 6, name: 'Track and Field' },
-    // { id: 7, name: 'Volleyball' },
-    // { id: 8, name: 'Swimming and Diving' },
-    // { id: 9, name: 'Tennis' },
-    // { id: 10, name: 'Golf' },
+    { id: 2, name: "Basketball"},
+    { id: 3, name: "Soccer"},
+    { id: 4, name: 'Lacrosse' },
+    { id: 5, name: 'FieldHockey' },
+    { id: 6, name: 'Track and Field' },
+    { id: 7, name: 'Volleyball' },
+    { id: 8, name: 'Swimming and Diving' },
+    { id: 9, name: 'Tennis' },
+    { id: 10, name: 'Golf' },
 ];
 
 const plans: Gender[] = [
@@ -620,7 +620,7 @@ export default function DemoPage() {
                                         Select Sport.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        Choose your Sport. Addition sports on the way soon.
+                                        Choose your Sport. Additional sports on the way soon.
                                     </p>
 
                                     <div className="z-2 w-72">
@@ -781,7 +781,7 @@ export default function DemoPage() {
                                                 <div className="space-y-2">
                                                     {plans.map((plan) => (
                                                         <RadioGroup.Option
-                                                            disabled
+                                                            disabled={selectedSport.name === "Football" ? true : false}
                                                             key={plan.name}
                                                             value={plan}
                                                             className={({ active, checked }) =>
