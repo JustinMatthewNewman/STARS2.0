@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import urls from "../public/domains";
-// import Image from 'next/image'
+import Image from 'next/image'
+import background from '../public/ESPN3.png';
 
 interface InputData {
     type: string;
@@ -148,7 +149,6 @@ function GetRoster() {
                         <h2>{header}</h2>
                         <p className="font-bold">{player.name}</p>
 
-                        <div className="flex flex-row">
                             <ul className="text-left text-sm ml-8">
                                 <li>NUMBER: {player.number}</li>
                                 <li>POSITION: {player.positionLong}</li>
@@ -159,12 +159,16 @@ function GetRoster() {
                                 </li>
                                 <li>YEAR: {player.year}</li>
                             </ul>
-                            {/* <Image
-                          src={"https://" + orgUrl + player.image}
-                          width={77}
-                          height={77}
-                          alt="PlayerImage"
-                        /> */}
+                        <div className="flex flex-row">
+                            <div className="flex">
+                              <Image 
+                                src={background}
+                                alt="ESPN"
+                                width="100%" 
+                                height="100%"
+                                objectFit="contain"
+                              />
+                            </div>
                         </div>
                     </div>
                 ))
