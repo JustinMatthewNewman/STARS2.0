@@ -18,6 +18,7 @@ interface Player {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     let errorFlag = 0;
+    let logo = "";
 
     if (req.query.url) {
         let url = req.query.url;
@@ -36,6 +37,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Parse HTML using jsdom
         const { window } = new JSDOM(html);
         const { document } = window;
+
+        try {
+            // Get the logo element
+            let logoElement = document.querySelector(".main-header__logo img") || document.querySelector(".mainLogo img");
+
+            // Check if the logo element exists
+            if (logoElement) {
+                // Get the value of the src attribute
+                const srcAttribute = logoElement.getAttribute("src");
+
+                // Check if srcAttribute is not null or empty
+                if (srcAttribute) {
+                    logo = srcAttribute;
+                } else {
+                    console.error("src attribute is empty");
+                }
+            } else {
+                console.error("Logo element not found");
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
+        console.log("Logo:", logo);
 
         const playerElements = document.querySelectorAll(".sidearm-roster-player");
         const players: Player[] = [];
@@ -80,16 +104,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 try {
                     // Get position long
-                    const positionLongElement = el.querySelector(".sidearm-roster-player-position-long-short.hide-on-small-down");
-                    positionLong = positionLongElement ? positionLongElement.textContent!.trim() : "";
+                    const positionLongElement = el.querySelector(
+                        ".sidearm-roster-player-position-long-short.hide-on-small-down"
+                    );
+                    positionLong = positionLongElement
+                        ? positionLongElement.textContent!.trim()
+                        : "";
                 } catch (error) {
                     // res.status(400).json({ error: "Failed to parse player position long" });
                 }
 
                 try {
                     // Get position short
-                    const positionShortElement = el.querySelector(".sidearm-roster-player-position-long-short.hide-on-medium");
-                    positionShort = positionShortElement ? positionShortElement.textContent!.trim() : "";
+                    const positionShortElement = el.querySelector(
+                        ".sidearm-roster-player-position-long-short.hide-on-medium"
+                    );
+                    positionShort = positionShortElement
+                        ? positionShortElement.textContent!.trim()
+                        : "";
                 } catch (error) {
                     // res.status(400).json({ error: "Failed to parse player position abbreviation" });
                 }
@@ -130,14 +162,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 try {
                     // Get year
-                    const yearElement = el.querySelector(".sidearm-roster-player-academic-year:not(.hide-on-large)");
+                    const yearElement = el.querySelector(
+                        ".sidearm-roster-player-academic-year:not(.hide-on-large)"
+                    );
                     year = yearElement ? yearElement.textContent!.trim() : "";
                 } catch (error) {
                     // res.status(400).json({ error: "Failed to parse player year" });
                 }
                 try {
                     // Get year short
-                    const yearShortElement = el.querySelector(".sidearm-roster-player-academic-year.hide-on-large");
+                    const yearShortElement = el.querySelector(
+                        ".sidearm-roster-player-academic-year.hide-on-large"
+                    );
                     yearShort = yearShortElement ? yearShortElement.textContent!.trim() : "";
                 } catch (error) {
                     // res.status(400).json({ error: "Failed to parse player year abbreviation" });
@@ -168,7 +204,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 });
             });
 
-            res.status(200).json({ players });
+            res.status(200).json({ players, logo });
             console.log("TEAM ACQUIRED SUCCESSFULLY");
         }
         if (errorFlag === 1) {

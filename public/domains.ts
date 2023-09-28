@@ -10,7 +10,7 @@ const urls: Domain[]  = [
 // { id: 3, name: 'gozips.com' },
 { id: 4, name: 'rolltide.com' },
 { id: 5, name: 'vmikeydets.com' },
-{ id: 6, name: 'appstatesports.com' },
+// { id: 6, name: 'appstatesports.com' },
 { id: 7, name: 'arizonawildcats.com' },
 // { id: 8, name: 'Arkansas at Little Rock Trojans' },
 // { id: 9, name: 'Arkansas Razorbacks' },

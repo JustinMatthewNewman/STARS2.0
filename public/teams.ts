@@ -10,7 +10,7 @@ const college: University[]  = [
 // { id: 3, name: 'Akron Zips' },
 { id: 4, name: 'Alabama Crimson Tide' },
 { id: 5, name: 'Virginia Military Institute' },
-{ id: 6, name: 'App State Mountaineers' },
+// { id: 6, name: 'App State Mountaineers' },
 { id: 7, name: 'Arizona Wildcats' },
 // { id: 8, name: 'Arkansas at Little Rock Trojans' },
 // { id: 9, name: 'Arkansas Razorbacks' },

@@ -27,11 +27,20 @@ interface Player {
     image: string;
 }
 
+interface LogoInfo {
+    src: string;
+    width: string;
+    height: string;
+}
+
 function GetRoster() {
     const [text, setText] = useState<string>("");
     const [players, setPlayers] = useState<Player[]>([]);
     const [header, setHeader] = useState<string>("");
     const [orgUrl, setTeamUrl] = useState<string | undefined>(undefined);
+    const [teamLogo, setTeamLogo] = useState<string | undefined>(undefined);
+    const [svgLogo, setSvgLogo] = useState<LogoInfo | undefined>(undefined);
+
     const isGetPlayersCalled = useRef<boolean>(false);
 
     const router = useRouter();
@@ -83,8 +92,19 @@ function GetRoster() {
 
                 isGetPlayersCalled.current = true;
             }
+            if (teamLogo && !svgLogo) {
+                console.log("TEAM LOGO URL:", teamLogo);
+                getLogo(teamLogo)
+                    .then((result) => {
+                        console.log(result);
+                        setSvgLogo(result);
+                    })
+                    .catch((error) => {
+                        console.error("Error fetching logo:", error);
+                    });
+            }
         }
-    }, [router.query, getPlayers]);
+    }, [router.query, getPlayers, getLogo]);
 
     function buildRosterURL(teamUrl: String, sport: String, gender: String) {
         if (sport === "Football") {
@@ -112,6 +132,32 @@ function GetRoster() {
         }
     }
 
+    function calculateScaleAndPosition(
+        containerWidth: number,
+        containerHeight: number,
+        containerX: number,
+        containerY: number,
+        svgWidth: number,
+        svgHeight: number
+    ) {
+        // Calculate the scaling factors for width and height
+        const widthScale = containerWidth / svgWidth;
+        const heightScale = containerHeight / svgHeight;
+
+        // Use the minimum scaling factor to maintain aspect ratio
+        const scale = Math.min(widthScale, heightScale);
+
+        // Calculate the adjusted dimensions
+        const adjustedWidth = svgWidth * scale - 20;
+        const adjustedHeight = svgHeight * scale - 20;
+
+        // Calculate the x and y coordinates to center the logo
+        const x = containerX + (containerWidth - adjustedWidth) / 2;
+        const y = containerY + (containerHeight - adjustedHeight) / 2;
+
+        return { scale, adjustedWidth, adjustedHeight, x, y };
+    }
+
     async function getPlayers(url: string): Promise<Player[]> {
         try {
             const response = await fetch("/api/parse?url=" + url, {
@@ -128,12 +174,43 @@ function GetRoster() {
             }
 
             const data = await response.json();
+            setTeamLogo(data.logo);
             return data.players || [];
         } catch (error) {
             console.error("Error fetching and parsing data:", error);
             return [];
         }
     }
+
+    async function getLogo(url: string): Promise<LogoInfo | undefined> {
+        try {
+            const response = await fetch("/api/logo?url=" + url, {
+                method: "POST",
+                body: JSON.stringify({ url }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            setSvgLogo(data);
+            return data || undefined;
+        } catch (error) {
+            console.error("Error fetching and parsing data:", error);
+            return undefined;
+        }
+    }
+    const width = svgLogo ? parseInt(svgLogo.width) : 0;
+    const height = svgLogo ? parseInt(svgLogo.height) : 0;
+    const { scale, adjustedWidth, adjustedHeight, x, y } = calculateScaleAndPosition(
+        252.762, // containerWidth
+        158.686, // containerHeight
+        20.515, // containerX
+        261.63, // containerY
+        width,
+        height
+    );
 
     return (
         <div className="flex flex-col justify-center text-center">
@@ -142,7 +219,7 @@ function GetRoster() {
             ) : (
                 players.map((player, index) => (
                     <div
-                        className="relative border p-4 mt-4 ml-8 mr-8 rounded-md bg-slate-200 text-white"
+                        className="relative p-4 mt-4 ml-8 mr-8"
                         key={index}>
                         <svg
                             viewBox="0 55.099 1070.721 444.901"
@@ -258,7 +335,7 @@ function GetRoster() {
 
                             {/* Color Stripe */}
                             <path
-                                fill="#e9d182"
+                                fill="#f5f5f5"
                                 strokeWidth="3"
                                 stroke="url(#gradient-0)"
                                 strokeLinejoin="round"
@@ -278,6 +355,20 @@ function GetRoster() {
                                 strokeWidth="7"
                             />
 
+                            {/* Center the image within the container */}
+                            {svgLogo && (
+
+                            <image
+                                x={x}
+                                y={y}
+                                width={adjustedWidth}
+                                height={adjustedHeight}
+                                xlinkHref={`data:image/svg+xml;utf8,${encodeURIComponent(
+                                    svgLogo.src as string
+                                )}`}
+                            />
+                            )}
+
                             <text
                                 textAnchor="left"
                                 font-size="30"
@@ -285,8 +376,9 @@ function GetRoster() {
                                 <tspan
                                     x="200"
                                     y="250">
-                                    {player.height} | {player.weight} | {player.hometown} |{" "}
-                                    {player.year}{" "}
+                                    {player.weight.length > 0
+                                        ? `${player.height} | ${player.weight} | ${player.hometown} | ${player.year}`
+                                        : `${player.height} | ${player.hometown} | ${player.year}`}
                                 </tspan>
                             </text>
 
