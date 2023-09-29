@@ -205,9 +205,9 @@ function GetRoster() {
     const height = svgLogo ? parseInt(svgLogo.height) : 0;
     const { scale, adjustedWidth, adjustedHeight, x, y } = calculateScaleAndPosition(
         252.762, // containerWidth
-        158.686, // containerHeight
+        140, // containerHeight
         20.515, // containerX
-        261.63, // containerY
+        270, // containerY
         width,
         height
     );
@@ -302,9 +302,9 @@ function GetRoster() {
 
                             {/* Top text background container */}
                             <rect
-                                x="114.677"
-                                y="209.672"
-                                width="885.749"
+                                x="50"
+                                y="200"
+                                width="961"
                                 height="194.772"
                                 rx="44.728"
                                 ry="44.728"
@@ -345,9 +345,9 @@ function GetRoster() {
                             {/* Logo Box */}
                             <rect
                                 x="20.515"
-                                y="261.63"
+                                y="270"
                                 width="252.762"
-                                height="158.686"
+                                height="140"
                                 rx="38.761"
                                 ry="38.761"
                                 fill="url(#gradient-3)"
@@ -357,28 +357,36 @@ function GetRoster() {
 
                             {/* Center the image within the container */}
                             {svgLogo && (
-
-                            <image
-                                x={x}
-                                y={y}
-                                width={adjustedWidth}
-                                height={adjustedHeight}
-                                xlinkHref={`data:image/svg+xml;utf8,${encodeURIComponent(
-                                    svgLogo.src as string
-                                )}`}
-                            />
+                                <image
+                                    x={x}
+                                    y={y}
+                                    width={adjustedWidth}
+                                    height={adjustedHeight}
+                                    xlinkHref={`data:image/svg+xml;utf8,${encodeURIComponent(
+                                        svgLogo.src as string
+                                    )}`}
+                                />
                             )}
 
                             <text
                                 textAnchor="left"
-                                font-size="30"
+                                font-size="34"
                                 fill="white">
                                 <tspan
-                                    x="200"
+                                    x="100"
                                     y="250">
-                                    {player.weight.length > 0
-                                        ? `${player.height} | ${player.weight} | ${player.hometown} | ${player.year}`
-                                        : `${player.height} | ${player.hometown} | ${player.year}`}
+                                    {
+                                        player.weight.length > 0 && player.height.length > 0 && player.hometown.length > 0 && player.year.length > 0
+                                            ? `${player.height} | ${player.weight} | ${player.hometown} | ${player.year}`
+                                            : player.height.length > 0 && player.hometown.length > 0 && player.year.length > 0
+                                            ? `${player.height} | ${player.hometown} | ${player.year}`
+                                            : player.hometown.length > 0 && player.year.length > 0
+                                            ? `${player.year} from ${player.hometown} `
+                                            : player.year.length > 0
+                                            ? `${player.year}`
+                                            : ''
+                                    }
+
                                 </tspan>
                             </text>
 
