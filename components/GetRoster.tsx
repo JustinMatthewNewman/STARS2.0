@@ -213,13 +213,16 @@ function GetRoster() {
     );
 
     return (
-        <div className="flex flex-col justify-center text-center">
+        <div className="flex flex-col justify-center text-center mt-10">
+            <p className="text-center p-12 mt-10">{header}</p>
             {players.length === 0 ? (
                 <p className="text-center p-12 mt-10">Loading...</p>
             ) : (
+                
                 players.map((player, index) => (
                     <div
-                        className="relative p-4 mt-4 ml-8 mr-8"
+                        style={{marginTop: -70}}
+                        className="relative mt-1 ml-8 mr-8"
                         key={index}>
                         <svg
                             viewBox="0 55.099 1070.721 444.901"
