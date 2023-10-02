@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+// import { AnimatePresence, motion } from "framer-motion";
 import { gradient } from "@/components/Gradient";
 import { useEffect } from "react";
 
@@ -11,7 +11,7 @@ export default function Home() {
   // }, []);
 
   return (
-    <AnimatePresence>
+    // <AnimatePresence>
       <div className="min-h-[100vh] sm:min-h-screen w-screen flex flex-col relative font-inter overflow-hidden">
         {/* <svg
           style={{ filter: "contrast(125%) brightness(110%)" }}
@@ -48,7 +48,7 @@ export default function Home() {
             />
           </motion.svg> */}
 
-          <motion.h1
+          <h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -61,8 +61,8 @@ export default function Home() {
             Statistic Team <br />
             Athletic Rendering <span className="text-[#407BBF]">software</span>
             <span className="font-inter text-[#407BBF]">.</span>
-          </motion.h1>
-          <motion.div
+          </h1>
+          <div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -89,10 +89,10 @@ export default function Home() {
                 This software was made possible by the guidance of John Salem, President of Telemedia Productions.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           <div className="flex gap-[15px] mt-8 md:mt-0">
-            <motion.div
+            <div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -131,7 +131,7 @@ export default function Home() {
                   />
                 </svg>
               </Link>
-            </motion.div>
+            </div>
           </div>
         </main>
 
@@ -143,7 +143,7 @@ export default function Home() {
           }}
         ></div>
 
-        <motion.canvas
+        {/* <motion.canvas
           initial={{
             filter: "blur(20px)",
           }}
@@ -161,7 +161,7 @@ export default function Home() {
           id="gradient-canvas"
           data-transition-in
           className="z-50 fixed top-0 right-[-2px] w-[80%] md:w-1/2 h-screen bg-[#c3e4ff]"
-        ></motion.canvas>
+        ></motion.canvas> */}
         <div className="h-[60px] bg-[#1D2B3A] fixed bottom-0 z-20 w-full flex flex-row items-center justify-evenly">
           <Link href="https://newmanjustin.com">          
           <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
@@ -529,6 +529,6 @@ export default function Home() {
           </svg> */}
         </div>
       </div>
-    </AnimatePresence>
+    // </AnimatePresence>
   );
 }
