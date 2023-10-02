@@ -216,13 +216,15 @@ function GetRoster() {
         <div className="flex flex-col justify-center text-center mt-10">
             <p className="text-center p-12 mt-10">{header}</p>
             {players.length === 0 ? (
-                <p className="text-center p-12 mt-10">Loading...</p>
+                
+                <><p className="text-center p-12 mt-10">Acquiring information from Roster.</p>
+                <p className="text-center p-12 mt-10">Please wait...</p></>
             ) : (
                 
                 players.map((player, index) => (
                     <div
                         style={{marginTop: -70}}
-                        className="relative mt-1 ml-8 mr-8"
+                        className="relative mt-7 ml-8 mr-8 p-4"
                         key={index}>
                          {/* <Image
                           src={player.image}
@@ -309,7 +311,7 @@ function GetRoster() {
                                 </linearGradient>
                             </defs>
 
-                            <image x="0" y="0" width="1000" height="1000" preserveAspectRatio="none" xlinkHref={player.image} />
+                            {/* <image x="0" y="0" width="1000" height="1000" preserveAspectRatio="none" xlinkHref={player.image} /> */}
 
 
                             {/* Top text background container */}

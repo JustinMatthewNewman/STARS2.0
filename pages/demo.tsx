@@ -69,12 +69,12 @@ const graphics = [
         description: "Inspired by the work of Kelly Bowmaster.",
         difficulty: "Easy",
     },
-    {
-        id: 2,
-        name: "HERO STYLE ARRIVING SOON.",
-        description: "Inspired by the work of Kerry Nevins.",
-        difficulty: "Easy",
-    },
+    // {
+    //     id: 2,
+    //     name: "HERO STYLE ARRIVING SOON.",
+    //     description: "Inspired by the work of Kerry Nevins.",
+    //     difficulty: "Easy",
+    // },
 ];
 
 function classNames(...classes: string[]) {
