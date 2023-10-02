@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import urls from "../public/domains";
 import Image from "next/image";
 import background from "../public/ESPN3.png";
-
+import Link from 'next/link'
 import JSZip from "jszip";
 
 interface InputData {
@@ -448,6 +448,19 @@ function GetRoster() {
 
     return (
         <div className="flex flex-col justify-center text-center mt-10">
+            <div className="flex justify-center items-center">
+                <Link href="/"
+
+                    
+                    className="group rounded-full mt-4 mb-4 px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#1E2B3A] text-white hover:[linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0D2247] no-underline flex gap-x-2 active:scale-95 scale-100 duration-75"
+                    style={{
+                        boxShadow:
+                            "0px 1px 4px rgba(13, 34, 71, 0.17), inset 0px 0px 0px 1px #061530, inset 0px 0px 0px 2px rgba(255, 255, 255, 0.1)",
+                        width: "30%",
+                    }}>
+                    <span> Home </span>
+                </Link>
+            </div>
             <p className="text-center p-12 mt-10">{header}</p>
             {players.length === 0 && !svgLogo ? (
                 <>

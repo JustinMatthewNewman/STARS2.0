@@ -415,7 +415,8 @@ export default function DemoPage() {
                                             </div>
                                         </RadioGroup>
                                     </div>
-                                    <div className="flex gap-[15px] justify-end mt-8">
+                                     <div className="flex gap-[15px] justify-center items-center mt-10 p-4">
+
                                         <div>
                                             <Link
                                                 href="/"
@@ -558,7 +559,8 @@ export default function DemoPage() {
                                             </div>
                                         </Combobox>
                                     </div>
-                                    <div className="flex gap-[15px] justify-end mt-8">
+                                     <div className="flex gap-[15px] justify-center items-center mt-10 p-4">
+
                                         <div>
                                             <button
                                                 onClick={() => setStep(1)}
@@ -706,7 +708,8 @@ export default function DemoPage() {
                                         </Combobox>
                                     </div>
 
-                                    <div className="flex gap-[15px] justify-end mt-8">
+                                     <div className="flex gap-[15px] justify-center items-center mt-10 p-4">
+
                                         <div>
                                             <button
                                                 onClick={() => setStep(2)}
@@ -827,7 +830,8 @@ export default function DemoPage() {
                                             </RadioGroup>
                                         </div>
                                     </div>
-                                    <div className="flex gap-[15px] justify-end mt-8">
+                                     <div className="flex gap-[15px] justify-center items-center mt-10 p-4">
+
                                         <div>
                                             <button
                                                 onClick={() => setStep(3)}
