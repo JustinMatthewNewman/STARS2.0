@@ -2,14 +2,14 @@ import "../styles/globals.css";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "STARS - Statistics Team Athletic Rendering Software",
+  title: "STARS - Statistics Team Athletic Rendering Software 2.0",
   openGraph: {
     title: "STARS - Statistics Team Athletic Rendering Software",
     description:
       "Auto generate ESPN inspired sports broadcast graphics for your university.",
     images: [
       {
-        url: "https://google.com",
+        url: "",
       },
     ],
   },
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     title: "STARS - Statistics Team Athletic Rendering Software",
     description:
       "STARS - Statistics Team Athletic Rendering Software",
-    images: ["https://google.com"],
+    images: [""],
     creator: "@newmanjustin",
   },
-  metadataBase: new URL("https://google.com"),
+  metadataBase: new URL("https://newmanjustin.com"),
   themeColor: "#FFF",
 };
 

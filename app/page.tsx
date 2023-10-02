@@ -6,9 +6,9 @@ import { gradient } from "@/components/Gradient";
 import { useEffect } from "react";
 
 export default function Home() {
-  useEffect(() => {
-    gradient.initGradient("#gradient-canvas");
-  }, []);
+  // useEffect(() => {
+  //   gradient.initGradient("#gradient-canvas");
+  // }, []);
 
   return (
     <AnimatePresence>
@@ -74,20 +74,19 @@ export default function Home() {
           >
             <div className="w-1/2">
               <h2 className="flex items-center font-semibold text-[1em] text-[#1a2b3b]">
-                STARS
+                STARS 2.0
               </h2>
-              <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal">
+              <p className="text-[12px] leading-[20px] text-[#1a2b3b] font-normal">
                 Full access to our platform, including all questions and
                 solutions.
               </p>
             </div>
             <div className="w-1/2">
               <h2 className="flex items-center font-semibold text-[1em] text-[#1a2b3b]">
-                Community
+                Credit
               </h2>
-              <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal">
-                Join a community of like-minded individuals, and learn from each
-                other.
+              <p className="text-[12px] leading-[20px] text-[#1a2b3b] font-normal">
+                This software was made possible by the guidance of John Salem, President of Telemedia Productions.
               </p>
             </div>
           </motion.div>
@@ -164,9 +163,11 @@ export default function Home() {
           className="z-50 fixed top-0 right-[-2px] w-[80%] md:w-1/2 h-screen bg-[#c3e4ff]"
         ></motion.canvas>
         <div className="h-[60px] bg-[#1D2B3A] fixed bottom-0 z-20 w-full flex flex-row items-center justify-evenly">
+          <Link href="https://newmanjustin.com">          
           <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
           ⓒ Justin Newman
           </p>
+          </Link>
           {/* <svg
             className="w-[20px] opacity-80"
             viewBox="0 0 706 720"

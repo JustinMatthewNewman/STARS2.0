@@ -6,7 +6,7 @@ import { useRef, useState, useEffect, useCallback, Fragment } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import toast, { Toaster } from "react-hot-toast";
-import { gradient } from "@/components/Gradient";
+// import { gradient } from "@/components/Gradient";
 import { useRouter } from 'next/router'
 
 /**
@@ -104,9 +104,9 @@ export default function DemoPage() {
     /**
      * Background grad
      */
-    useEffect(() => {
-        gradient.initGradient("#gradient-canvas");
-    }, []);
+    // useEffect(() => {
+    //     gradient.initGradient("#gradient-canvas");
+    // }, []);
 
     /**
      * Code for the select college combobox
@@ -768,7 +768,7 @@ export default function DemoPage() {
                                         Select Gender.
                                     </h2>
                                     <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                                        Will soon include both genders. Working to get all football teams in for fall season first.
+                                       Remember some sports only include one gender.
                                     </p>
                                     <div className="w-full px-4 py-16">
                                         <div className="mx-auto w-full max-w-md">
@@ -877,7 +877,7 @@ export default function DemoPage() {
                             )}
                         </div>
                     </div>
-                    <motion.canvas
+                    {/* <motion.canvas
                     initial={{
                       filter: "blur(20px)",
                     }}
@@ -896,7 +896,7 @@ export default function DemoPage() {
                     id="gradient-canvas"
                     data-transition-in
                     className="z-50 fixed top-0 right-[-2px] w-[80%] md:w-1/2 h-screen bg-[#c3e4ff]"
-                  ></motion.canvas>
+                  ></motion.canvas> */}
                 </div>
             )}
         </AnimatePresence>

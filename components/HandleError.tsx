@@ -66,7 +66,7 @@ function HandleError() {
 
                 </div>
             ) : (
-                <div>
+                <div className="flex items-center justify-center flex-col">
                     <p className="text-center p-12 mt-10">Loading...</p>
                 </div>
             )}
