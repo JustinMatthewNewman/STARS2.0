@@ -126,7 +126,11 @@ export default function Home() {
           ⓒ Justin Newman
           </p>
           </Link>
-
+          <Link href="https://telemediaproductions.com">          
+          <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
+          ⓒ John Salem
+          </p>
+          </Link>
           {/* <Link href="https://www.telemediaproductions.com/">          
           <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
            Made possible by Telemedia Productions
