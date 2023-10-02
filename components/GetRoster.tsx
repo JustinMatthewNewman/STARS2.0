@@ -4,6 +4,8 @@ import urls from "../public/domains";
 import Image from "next/image";
 import background from "../public/ESPN3.png";
 
+import JSZip from "jszip";
+
 interface InputData {
     type: string;
     org: string;
@@ -213,7 +215,14 @@ function GetRoster() {
         height
     );
 
-    function generateSVGContent(player: Player, x: number, y: number, adjustedWidth:number, adjustedHeight:number, logosrc:string) {
+    function generateSVGContent(
+        player: Player,
+        x: number,
+        y: number,
+        adjustedWidth: number,
+        adjustedHeight: number,
+        logosrc: string
+    ) {
         const svgXML = `
         <defs
             xmlns="http://www.w3.org/2000/svg">
@@ -392,6 +401,41 @@ function GetRoster() {
         }
     }
 
+    function handleDownloadAll(players: Player[], header: string) {
+        const zip = new JSZip();
+
+        players.forEach((player, index) => {
+            const svgContent = playerSVGContents[index];
+
+            const stringSVG = `<svg viewBox="0 55.099 1070.721 444.901" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">${svgContent}</svg>`;
+
+            // Create a Blob from the SVG content
+            const blob = new Blob([stringSVG], { type: "image/svg+xml" });
+
+            // Add the SVG file to the zip with a unique filename
+            zip.file(`${header.replace(/\s/g, "")}_${player.name.replace(/\s/g, "")}.svg`, blob);
+        });
+
+        // Generate the zip file and offer it for download
+        zip.generateAsync({ type: "blob" }).then((blob) => {
+            const url = URL.createObjectURL(blob);
+
+            // Create an anchor element to trigger the download
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = header.replace(/\s/g, "") + ".zip"; // Set the desired filename for the zip file
+            a.style.display = "none";
+
+            // Append the anchor element to the document and trigger the click event
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up by removing the anchor and revoking the Blob URL
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    }
+
     const playerSVGContents = useMemo(() => {
         if (svgLogo) {
             return players.map((player) =>
@@ -423,29 +467,43 @@ function GetRoster() {
                           alt="PlayerImage"
                         /> */}
 
-
                         <svg
                             viewBox="0 55.099 1070.721 444.901"
-                            xmlns="http://www.w3.org/2000/svg"
-                            >
+                            xmlns="http://www.w3.org/2000/svg">
                             {/* Render the SVG content using dangerouslySetInnerHTML */}
                             <g dangerouslySetInnerHTML={{ __html: playerSVGContents[index] }} />
                         </svg>
 
-                        <a className="flex flex-row items-center justify-center" style={{zIndex: 100}} onClick={() => handleDownload(player, index, header)}>
-
+                        <a
+                            className="flex flex-row items-center justify-center"
+                            style={{ zIndex: 100 }}
+                            onClick={() => handleDownload(player, index, header)}>
                             <svg
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                              height="2rem"
-                              width="2rem"
-                            >
-                              <path d="M22.71 6.29a1 1 0 00-1.42 0L20 7.59V2a1 1 0 00-2 0v5.59l-1.29-1.3a1 1 0 00-1.42 1.42l3 3a1 1 0 00.33.21.94.94 0 00.76 0 1 1 0 00.33-.21l3-3a1 1 0 000-1.42zM19 13a1 1 0 00-1 1v.38l-1.48-1.48a2.79 2.79 0 00-3.93 0l-.7.7-2.48-2.48a2.85 2.85 0 00-3.93 0L4 12.6V7a1 1 0 011-1h8a1 1 0 000-2H5a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3v-5a1 1 0 00-1-1zM5 20a1 1 0 01-1-1v-3.57l2.9-2.9a.79.79 0 011.09 0l3.17 3.17 4.3 4.3zm13-1a.89.89 0 01-.18.53L13.31 15l.7-.7a.77.77 0 011.1 0L18 17.21z" />
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                height="2rem"
+                                width="2rem">
+                                <path d="M22.71 6.29a1 1 0 00-1.42 0L20 7.59V2a1 1 0 00-2 0v5.59l-1.29-1.3a1 1 0 00-1.42 1.42l3 3a1 1 0 00.33.21.94.94 0 00.76 0 1 1 0 00.33-.21l3-3a1 1 0 000-1.42zM19 13a1 1 0 00-1 1v.38l-1.48-1.48a2.79 2.79 0 00-3.93 0l-.7.7-2.48-2.48a2.85 2.85 0 00-3.93 0L4 12.6V7a1 1 0 011-1h8a1 1 0 000-2H5a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3v-5a1 1 0 00-1-1zM5 20a1 1 0 01-1-1v-3.57l2.9-2.9a.79.79 0 011.09 0l3.17 3.17 4.3 4.3zm13-1a.89.89 0 01-.18.53L13.31 15l.7-.7a.77.77 0 011.1 0L18 17.21z" />
                             </svg>
                             <p>{player.name}</p>
                         </a>
-                        </div>
+                    </div>
                 ))
+            )}
+
+            {players.length > 0 && (
+                <div className="flex justify-center items-center">
+                    <button
+                        onClick={() => handleDownloadAll(players, header)}
+                        className="group rounded-full mt-4 mb-4 px-4 py-2 text-[13px] font-semibold transition-all items-center justify-center bg-[#1E2B3A] text-white hover:[linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0D2247] no-underline flex gap-x-2 active:scale-95 scale-100 duration-75"
+                        style={{
+                            boxShadow:
+                                "0px 1px 4px rgba(13, 34, 71, 0.17), inset 0px 0px 0px 1px #061530, inset 0px 0px 0px 2px rgba(255, 255, 255, 0.1)",
+                            width: "30%",
+                        }}>
+                        <span> Download All </span>
+                    </button>
+                </div>
             )}
         </div>
     );
