@@ -49,13 +49,6 @@ export default function Home() {
           </motion.svg> */}
 
           <h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.15,
-              duration: 0.95,
-              ease: [0.165, 0.84, 0.44, 1],
-            }}
             className="relative md:ml-[-10px] md:mb-[37px] font-extrabold text-[16vw] md:text-[130px] font-inter text-[#1E2B3A] leading-[0.9] tracking-[-2px] z-[100]"
           >
             Statistic Team <br />
@@ -65,13 +58,6 @@ export default function Home() {
          
           <div className="flex gap-[15px] mt-8 md:mt-0 flex items-center justify-center">
             <div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.65,
-                duration: 0.55,
-                ease: [0.075, 0.82, 0.965, 1],
-              }}
             >
               <Link
                 href="/demo"
