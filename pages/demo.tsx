@@ -66,7 +66,7 @@ const graphics = [
     {
         id: 1,
         name: "ESPN STYLE",
-        description: "Inspired by the work of Kelly Bowmaster.",
+        description: "Inspired by the style of ESPN graphics.",
         difficulty: "Easy",
     },
     // {

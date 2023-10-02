@@ -62,36 +62,8 @@ export default function Home() {
             Athletic Rendering <span className="text-[#407BBF]">software</span>
             <span className="font-inter text-[#407BBF]">.</span>
           </h1>
-          <div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.15,
-              duration: 0.95,
-              ease: [0.165, 0.84, 0.44, 1],
-            }}
-            className="flex flex-row justify-center z-20 mx-0 mb-0 mt-8 md:mt-0 md:mb-[35px] max-w-2xl md:space-x-8"
-          >
-            <div className="w-1/2">
-              <h2 className="flex items-center font-semibold text-[1em] text-[#1a2b3b]">
-                STARS 2.0
-              </h2>
-              <p className="text-[12px] leading-[20px] text-[#1a2b3b] font-normal">
-                Full access to our platform, including all questions and
-                solutions.
-              </p>
-            </div>
-            <div className="w-1/2">
-              <h2 className="flex items-center font-semibold text-[1em] text-[#1a2b3b]">
-                Credit
-              </h2>
-              <p className="text-[12px] leading-[20px] text-[#1a2b3b] font-normal">
-                This software was made possible by the guidance of John Salem, President of Telemedia Productions.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-[15px] mt-8 md:mt-0">
+         
+          <div className="flex gap-[15px] mt-8 md:mt-0 flex items-center justify-center">
             <div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -135,13 +107,13 @@ export default function Home() {
           </div>
         </main>
 
-        <div
+        {/* <div
           className="fixed top-0 right-0 w-[80%] md:w-1/2 h-screen bg-[#1F2B3A]/20"
           style={{
             clipPath:
               "polygon(100px 0,100% 0,calc(100% + 225px) 100%, 480px 100%)",
           }}
-        ></div>
+        ></div> */}
 
         {/* <motion.canvas
           initial={{
@@ -168,6 +140,12 @@ export default function Home() {
           ⓒ Justin Newman
           </p>
           </Link>
+
+          {/* <Link href="https://www.telemediaproductions.com/">          
+          <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
+           Made possible by Telemedia Productions
+          </p>
+          </Link> */}
           {/* <svg
             className="w-[20px] opacity-80"
             viewBox="0 0 706 720"
