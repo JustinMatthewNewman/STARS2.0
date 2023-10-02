@@ -8,3 +8,7 @@
   --gradient-color-3: #d8e9ee;
   --gradient-color-4: #cd94ff;
 }
+
+body {
+  overflow-x: hidden;
+}

@@ -224,6 +224,12 @@ function GetRoster() {
                         style={{marginTop: -70}}
                         className="relative mt-1 ml-8 mr-8"
                         key={index}>
+                         {/* <Image
+                          src={player.image}
+                          width={77}
+                          height={77}
+                          alt="PlayerImage"
+                        /> */}
                         <svg
                             viewBox="0 55.099 1070.721 444.901"
                             xmlns="http://www.w3.org/2000/svg">
@@ -302,6 +308,9 @@ function GetRoster() {
                                     />
                                 </linearGradient>
                             </defs>
+
+                            <image x="0" y="0" width="1000" height="1000" preserveAspectRatio="none" xlinkHref={player.image} />
+
 
                             {/* Top text background container */}
                             <rect
