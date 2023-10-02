@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/router";
 import urls from "../public/domains";
 import Image from "next/image";
@@ -201,6 +201,7 @@ function GetRoster() {
             return undefined;
         }
     }
+
     const width = svgLogo ? parseInt(svgLogo.width) : 0;
     const height = svgLogo ? parseInt(svgLogo.height) : 0;
     const { scale, adjustedWidth, adjustedHeight, x, y } = calculateScaleAndPosition(
@@ -212,221 +213,225 @@ function GetRoster() {
         height
     );
 
+    function generateSVGContent(player: Player, x: number, y: number, adjustedWidth:number, adjustedHeight:number, logosrc:string) {
+        const svgXML = `
+        <defs
+            xmlns="http://www.w3.org/2000/svg">
+            <linearGradient gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" id="color-0-2" gradientTransform="matrix(1.147965, 0, 0, 1, -3.035496, 0)"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#color-0"/>
+                <linearGradient id="color-0"
+                    xmlns:bx="https://boxy-svg.com" bx:pinned="true">
+                    <stop style="stop-color: #000000;" offset="0"/>
+                    <stop style="stop-color: #434343;" offset="1"/>
+                </linearGradient>
+                <linearGradient id="color-1-0" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="matrix(1.143602, -0.087099, 0.044419, 0.44257, 7.86117, 159.433456)"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#color-1"/>
+                    <linearGradient id="color-1"
+                        xmlns:bx="https://boxy-svg.com" bx:pinned="true">
+                        <stop style="stop-color: rgb(132, 132, 132);" offset="0"/>
+                        <stop style="stop-color: #ffffff;" offset="1"/>
+                    </linearGradient>
+                    <linearGradient id="gradient-1-0" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gradient-1"/>
+                        <linearGradient id="gradient-1" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop style="stop-color: rgb(240, 240, 240);" offset="0"/>
+                            <stop style="stop-color: rgb(180, 180, 180);" offset="1"/>
+                        </linearGradient>
+                        <radialGradient id="gradient-0-0" gradientUnits="userSpaceOnUse" cx="472.376" cy="337.345" r="417.766" gradientTransform="matrix(1.147965, 0, 0, 0.764064, 12.651199, 81.586609)"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gradient-0"/>
+                            <linearGradient id="gradient-0">
+                                <stop style="stop-color: rgb(73, 73, 73);" offset="0"/>
+                                <stop offset="0.587" style="stop-color: rgb(132, 132, 132);"/>
+                                <stop style="stop-color: rgb(174, 174, 174);" offset="1"/>
+                            </linearGradient>
+                            <linearGradient id="gradient-0-2" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="matrix(0.833189, 0.767927, -14.455228, 9.39646, 5398.691835, -3504.207764)"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gradient-0"/>
+                                <radialGradient id="gradient-3-0" gradientUnits="userSpaceOnUse" cx="151.171" cy="340.973" r="130.656" gradientTransform="matrix(2.560279, -0.040098, 0.014652, 0.999885, -245.13901, 6.100863)"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gradient-3"/>
+                                    <linearGradient id="gradient-3" >
+                                        <stop style="stop-color: rgb(30, 30, 30);" offset="0"/>
+                                        <stop style="stop-color: rgb(93, 93, 93);" offset="1"/>
+                                    </linearGradient>
+                                    <linearGradient id="gradient-0-1" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%" gradientTransform="matrix(-0.840451, -0.49503, 0.945819, -1.716252, 11.08176, 1006.351746)"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gradient-0"/>
+                                    </defs>
+                                    <style>
+                                        <![CDATA[
+                                    text {
+                                        font-family:  Helvetica;
+                                    }
+                                    ]]>
+                                    </style>
+                                    <!-- Top text background container -->
+                                    <rect
+                                    x="50"
+                                    y="200"
+                                    width="961"
+                                    height="194.772"
+                                    rx="44.728"
+                                    ry="44.728"
+                                    fill="url(#color-0)"
+                                    fill-opacity="0.84"
+                                    stroke="url(#color-1)"
+                                    stroke-width="6"
+                                    stroke-linejoin="round"
+                                    stroke-dashoffset="29"
+                                    stroke-linecap="round"
+                                    paint-order="fill"
+                                />
+                                    <!-- Color Strip background box -->
+                                    <rect
+                                    x="75.342"
+                                    y="271.612"
+                                    width="959.161"
+                                    height="135.456"
+                                    rx="29.022"
+                                    ry="29.022"
+                                    fill="url(#gradient-1)"
+                                    stroke="url(#gradient-0)"
+                                    stroke-width="5"
+                                    stroke-linejoin="round"
+                                />
+                                    <!-- Color Stripe -->
+                                    <path
+                                    fill="#f5f5f5"
+                                    stroke="url(#gradient-0)"
+                                    stroke-width="3"
+                                    stroke-linejoin="round"
+                                    d="M 213.275 324.005 L 649.25 324.005 L 693.623 358.085 L 999.029 358.085 L 999.029 374.139 L 693.623 374.139 L 649.25 340.059 L 213.275 340.059 L 213.275 324.005 Z"
+                                />
+                                    <!-- Logo Box -->
+                                    <rect
+                                    x="20.515"
+                                    y="270"
+                                    width="252.762"
+                                    height="140"
+                                    rx="38.761"
+                                    ry="38.761"
+                                    fill="url(#gradient-3)"
+                                    stroke="url(#gradient-0)"
+                                    stroke-width="7"
+                    
+                                />
+                                    <image
+                                    x="${x}"
+                                    y="${y}"
+                                    width="${adjustedWidth}"
+                                    height="${adjustedHeight}"
+                                    xlink:href="data:image/svg+xml;utf8,${encodeURIComponent(
+                                        logosrc
+                                    )}"
+                                />
+                                    <!-- Text elements -->
+                                    <text text-anchor="left" font-size="34" fill="white">
+                                        <tspan x="100" y="250">${getPlayerInfo(player)}</tspan>
+                                    </text>
+                                    <text text-anchor="left" font-size="27" fill="#2b2b2b">
+                                        <tspan x="290" y="312">${player.name} | #${
+            player.number
+        }</tspan>
+                                    </text>
+                                    <text text-anchor="left" font-size="34" fill="#2b2b2b">
+                                        <tspan x="290" y="380">${player.positionLong}</tspan>
+                                    </text>
+        `;
+
+        return svgXML;
+    }
+
+    function handleDownload(player: Player, index: number, header: string) {
+        if (playerSVGContents[index]) {
+            // Get the SVG content for the specified player
+            const svgContent = playerSVGContents[index];
+
+            const stringSVG = `<svg viewBox="0 55.099 1070.721 444.901" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">${svgContent}</svg>`;
+
+            // Create a Blob from the SVG content
+            const blob = new Blob([stringSVG], { type: "image/svg+xml" });
+
+            // Create a URL for the Blob
+            const url = URL.createObjectURL(blob);
+
+            // Create an anchor element to trigger the download
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = header.replace(/\s/g, "") + "_" + player.name.replace(/\s/g, "") + ".svg"; // Set the desired filename here
+            a.style.display = "none";
+
+            // Append the anchor element to the document and trigger the click event
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up by removing the anchor and revoking the Blob URL
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    function getPlayerInfo(player: Player) {
+        // Construct and return the player information string
+        if (
+            player.weight.length > 0 &&
+            player.height.length > 0 &&
+            player.hometown.length > 0 &&
+            player.year.length > 0
+        ) {
+            return `${player.height} | ${player.weight} | ${player.hometown} | ${player.year}`;
+        } else if (
+            player.height.length > 0 &&
+            player.hometown.length > 0 &&
+            player.year.length > 0
+        ) {
+            return `${player.height} | ${player.hometown} | ${player.year}`;
+        } else if (player.hometown.length > 0 && player.year.length > 0) {
+            return `${player.year} from ${player.hometown}`;
+        } else if (player.year.length > 0) {
+            return `${player.year}`;
+        } else {
+            return "";
+        }
+    }
+
+    const playerSVGContents = useMemo(() => {
+        if (svgLogo) {
+            return players.map((player) =>
+                generateSVGContent(player, x, y, adjustedWidth, adjustedHeight, svgLogo.src)
+            );
+        }
+        // Return an empty array or handle the case where svgLogo is not set yet
+        return [];
+    }, [players, x, y, adjustedWidth, adjustedHeight, svgLogo]);
+
     return (
         <div className="flex flex-col justify-center text-center mt-10">
             <p className="text-center p-12 mt-10">{header}</p>
-            {players.length === 0 ? (
-                
-                <><p className="text-center p-12 mt-10">Acquiring information from Roster.</p>
-                <p className="text-center p-12 mt-10">Please wait...</p></>
+            {players.length === 0 && !svgLogo ? (
+                <>
+                    <p className="text-center p-12 mt-10">Acquiring information from Roster.</p>
+                    <p className="text-center p-12 mt-10">Please wait...</p>
+                </>
             ) : (
-                
                 players.map((player, index) => (
                     <div
-                        style={{marginTop: -70}}
-                        className="relative mt-7 ml-8 mr-8 p-4"
+                        id={player.name.replace(/\s/g, "") + "_" + index}
+                        style={{ marginTop: -70 }}
+                        className="relative mt-7 ml-8 mr-8 p-4 "
                         key={index}>
-                         {/* <Image
+                        {/* <Image
                           src={player.image}
                           width={77}
                           height={77}
                           alt="PlayerImage"
                         /> */}
-                        <svg
-                            viewBox="0 55.099 1070.721 444.901"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient
-                                    id="color-0"
-                                    x1="0%"
-                                    y1="0%"
-                                    x2="0%"
-                                    y2="100%">
-                                    <stop
-                                        offset="0"
-                                        stopColor="#000000"
-                                    />
-                                    <stop
-                                        offset="1"
-                                        stopColor="#434343"
-                                    />
-                                </linearGradient>
-
-                                <linearGradient
-                                    id="color-1"
-                                    x1="0%"
-                                    y1="0%"
-                                    x2="0%"
-                                    y2="100%">
-                                    <stop
-                                        offset="0"
-                                        stopColor="#848484"
-                                    />
-                                    <stop
-                                        offset="1"
-                                        stopColor="#ffffff"
-                                    />
-                                </linearGradient>
-
-                                <linearGradient
-                                    id="gradient-1"
-                                    x1="0%"
-                                    y1="0%"
-                                    x2="0%"
-                                    y2="100%">
-                                    <stop
-                                        offset="0"
-                                        stopColor="#f0f0f0"
-                                    />
-                                    <stop
-                                        offset="2.5"
-                                        stopColor="#bfbfbf"
-                                    />
-                                </linearGradient>
-
-                                <radialGradient id="gradient-0">
-                                    <stop
-                                        offset="0"
-                                        stopColor="#494949"
-                                    />
-                                    <stop
-                                        offset="0.587"
-                                        stopColor="#848484"
-                                    />
-                                    <stop
-                                        offset="1"
-                                        stopColor="#aeaeae"
-                                    />
-                                </radialGradient>
-
-                                <linearGradient id="gradient-3">
-                                    <stop
-                                        offset="0"
-                                        stopColor="#1e1e1e"
-                                    />
-                                    <stop
-                                        offset="1"
-                                        stopColor="#5d5d5d"
-                                    />
-                                </linearGradient>
-                            </defs>
-
-                            {/* <image x="0" y="0" width="1000" height="1000" preserveAspectRatio="none" xlinkHref={player.image} /> */}
-
-
-                            {/* Top text background container */}
-                            <rect
-                                x="50"
-                                y="200"
-                                width="961"
-                                height="194.772"
-                                rx="44.728"
-                                ry="44.728"
-                                fill="url(#color-0)"
-                                fillOpacity="0.84"
-                                stroke="url(#color-1)"
-                                strokeWidth="6"
-                                strokeLinejoin="round"
-                                strokeDashoffset="29"
-                                strokeLinecap="round"
-                                paintOrder="fill"
-                            />
-
-                            {/* Color Strip background box */}
-
-                            <rect
-                                x="75.342"
-                                y="271.612"
-                                width="959.161"
-                                height="135.456"
-                                rx="29.022"
-                                ry="29.022"
-                                fill="url(#gradient-1)"
-                                stroke="url(#gradient-0)"
-                                strokeWidth="5"
-                                strokeLinejoin="round"
-                            />
-
-                            {/* Color Stripe */}
-                            <path
-                                fill="#f5f5f5"
-                                strokeWidth="3"
-                                stroke="url(#gradient-0)"
-                                strokeLinejoin="round"
-                                d="M 213.275 324.005 L 649.25 324.005 L 693.623 358.085 L 999.029 358.085 L 999.029 374.139 L 693.623 374.139 L 649.25 340.059 L 213.275 340.059 L 213.275 324.005 Z"
-                            />
-                            
-
-                            {/* Logo Box */}
-                            <rect
-                                x="20.515"
-                                y="270"
-                                width="252.762"
-                                height="140"
-                                rx="38.761"
-                                ry="38.761"
-                                fill="url(#gradient-3)"
-                                stroke="url(#gradient-0)"
-                                strokeWidth="7"
-                            />
-
-                            {/* Center the image within the container */}
-                            {svgLogo && (
-                                <image
-                                    x={x}
-                                    y={y}
-                                    width={adjustedWidth}
-                                    height={adjustedHeight}
-                                    xlinkHref={`data:image/svg+xml;utf8,${encodeURIComponent(
-                                        svgLogo.src as string
-                                    )}`}
-                                />
-                            )}
-
-                            <text
-                                textAnchor="left"
-                                font-size="34"
-                                fill="white">
-                                <tspan
-                                    x="100"
-                                    y="250">
-                                    {
-                                        player.weight.length > 0 && player.height.length > 0 && player.hometown.length > 0 && player.year.length > 0
-                                            ? `${player.height} | ${player.weight} | ${player.hometown} | ${player.year}`
-                                            : player.height.length > 0 && player.hometown.length > 0 && player.year.length > 0
-                                            ? `${player.height} | ${player.hometown} | ${player.year}`
-                                            : player.hometown.length > 0 && player.year.length > 0
-                                            ? `${player.year} from ${player.hometown} `
-                                            : player.year.length > 0
-                                            ? `${player.year}`
-                                            : ''
-                                    }
-
-                                </tspan>
-                            </text>
-
-                            <text
-                                textAnchor="left"
-                                font-size="27"
-                                fill="#2b2b2b">
-                                <tspan
-                                    x="290"
-                                    y="312">
-                                    {player.name} | #{player.number}
-                                </tspan>
-                            </text>
-
-                            <text
-                                textAnchor="left"
-                                font-size="34"
-                                fill="#2b2b2b">
-                                <tspan
-                                    x="290"
-                                    y="380">
-                                    {player.positionLong}
-                                </tspan>
-                            </text>
-                        </svg>
+                        <a onClick={() => handleDownload(player, index, header)}>
+                            <svg
+                                viewBox="0 55.099 1070.721 444.901"
+                                xmlns="http://www.w3.org/2000/svg"
+                                >
+                                {/* Render the SVG content using dangerouslySetInnerHTML */}
+                                <g dangerouslySetInnerHTML={{ __html: playerSVGContents[index] }} />
+                            </svg>
+                        </a>
                     </div>
                 ))
             )}
