@@ -7,7 +7,7 @@ import MelodifyText from './MelodifyText'
 
 export default function ScienceHero2() {
   return (
-    <div className=" container flex flex-col md:flex-row items-center justify-center mt-12 mb-12 gap-4 max-w-[1200px]">
+    <div className=" container flex flex-col md:flex-row items-center justify-center mt-12 mb-12 gap-4 max-w-[1400px] p-4">
         
         <MelodifyInfo/>
         <MelodifyText/>
