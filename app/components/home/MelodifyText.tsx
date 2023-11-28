@@ -12,8 +12,7 @@ export default function MelodifyText() {
         }}
         className="leading-tight"
       >
-        Empowering individuals to transform their ideas into songs, creating a
-        harmonious music where stories,{" "}
+         Elevating strategic {" "}
         <span
           className="hover:scale-110 ease-in duration-300"
           style={{
@@ -24,9 +23,9 @@ export default function MelodifyText() {
             display: "inline-block",
           }}
         >
-          dreams
+          insights
         </span>{" "}
-        , and voices merge to{" "}
+        to the realm of sporting {" "}
         <span
           className="hover:scale-110 ease-in duration-300"
           style={{
@@ -37,20 +36,7 @@ export default function MelodifyText() {
             display: "inline-block",
           }}
         >
-          inspire
-        </span>{" "}
-        the world through the universal language of{" "}
-        <span
-          className="hover:scale-110 ease-in duration-300"
-          style={{
-            backgroundImage:
-              "linear-gradient(345deg, rgba(230,122,122,1) 0%, rgba(139,38,240,1) 50%, rgba(255,0,249,1) 100%)",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
-            display: "inline-block",
-          }}
-        >
-          music
+          wisdom
         </span>
         .
       </h2>

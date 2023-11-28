@@ -12,7 +12,7 @@ export default function AppsText() {
         }}
         className="leading-tight"
         >
-        A {" "}
+        Empowering athletic strategists with {" "} 
         <span
         className="hover:scale-110 ease-in duration-300"
           style={{
@@ -23,10 +23,9 @@ export default function AppsText() {
             display: "inline-block",
           }}
           >
-          text-to-song 
+          precision
         </span>
-        {" "}web application that utilizes your
-              {" "}
+        , our rendering software seamlessly extracts {" "} 
         <span
         className="hover:scale-110 ease-in duration-300"
           style={{
@@ -37,9 +36,9 @@ export default function AppsText() {
             display: "inline-block",
           }}
           >
-            input prompt
+            real-time data
         </span>
-        {" "} to query the OpenAI API for {" "}
+        {" "} from rosters, transforming information into strategic wisdom for a competitive edge {" "} 
         <span
         className="hover:scale-110 ease-in duration-300"
           style={{
@@ -50,7 +49,7 @@ export default function AppsText() {
             display: "inline-block",
           }}
           >
-            lyrics
+            like never before
         </span>
         .
       </h2>
