@@ -19,8 +19,13 @@ import { CircularProgress } from "@nextui-org/react";
 import { Tabs, Tab } from "@nextui-org/react";
 
 import Link from "next/link";
+import { signOut, signIn } from "next-auth/react";
+import { Session } from "next-auth";
+type Props = {
+  session: Session | null;
+};
 
-export default function TabsNavbar() {
+export default function TabsNavbar({ session }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -79,7 +84,7 @@ export default function TabsNavbar() {
       isMenuOpen={isOpen}
       className={`fixed w-full h-20 z-[100]`}
     >
-       <NavbarContent className="hidden lg:flex gap-4">
+      <NavbarContent className="hidden lg:flex gap-4">
         <NavbarBrand>
           <Link color="foreground" href="/">
             STARS
@@ -117,6 +122,43 @@ export default function TabsNavbar() {
 
         <NavbarItem>
           <ThemeSwitcher />
+         
+        </NavbarItem>
+        <NavbarItem>
+        {session ? (
+            <Button
+              className="m-2"
+              color="danger"
+              radius="full"
+              size="md"
+              onPress={() => signOut()}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                />
+              </svg>
+            </Button>
+          ) : (
+            <Button
+              className="m-2"
+              color="primary"
+              radius="full"
+              size="md"
+              onPress={() => signIn()}
+            >
+              Sign In
+            </Button>
+          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>

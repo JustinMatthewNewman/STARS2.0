@@ -25,7 +25,7 @@ export default function RootLayout({
         <Providers>
         <Background/>
           <header>
-            <TabsNavbar/>
+            <TabsNavbar session={null}/>
             {/* <NextNavbar/> */}
           </header>
           <main>{children}</main>

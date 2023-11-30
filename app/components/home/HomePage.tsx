@@ -6,10 +6,11 @@ import Image from "next/image";
 import bgLines from "../../../public/images/background/looper-pattern.svg";
 import MacDisplay from "./MacDisplay";
 import AppsHero2 from "./AppsHero2";
-import { useSession } from "next-auth/react";
-
-export default function HomePage() {
-  const { data: session } = useSession();
+import { Session } from "next-auth";
+type Props = {
+  session: Session | null;
+};
+export default function HomePage({ session }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { NextUIProvider } from "@nextui-org/react";
+import { SessionProvider } from "next-auth/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 export default function Providers({
@@ -15,7 +16,9 @@ export default function Providers({
           defaultTheme="dark"
           themes={["light", "dark", "modern"]}
         >
+          <SessionProvider>
           {children}
+          </SessionProvider>
         </NextThemesProvider>
       </NextUIProvider>
   );
