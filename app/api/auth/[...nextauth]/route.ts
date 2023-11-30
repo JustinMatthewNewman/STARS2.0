@@ -7,13 +7,13 @@ export const authOption = {
       GoogleProvider({
         clientId: process.env.GOOGLE_ID!,
         clientSecret: process.env.GOOGLE_SECRET!,
-        // authorization: {
-        //   params: {
-        //     prompt: "consent",
-        //     access_type: "offline",
-        //     response_type: "code"
-        //   }
-        // }
+        authorization: {
+          params: {
+            prompt: "consent",
+            access_type: "offline",
+            response_type: "code"
+          }
+        }
       }),
       
     ],
@@ -25,6 +25,7 @@ export const authOption = {
           .toLocaleLowerCase();
   
         session.user.uid = token.sub;
+        console.log(session)
         return session;
       },
     },

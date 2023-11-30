@@ -1,10 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import AppsHero from "./AppsHero";
-import StarsInfo from "./StarsInfo";
 import Image from "next/image";
 import bgLines from "../../../public/images/background/looper-pattern.svg";
-import MacDisplay from "./MacDisplay";
 import AppsHero2 from "./AppsHero2";
 import { Session } from "next-auth";
 type Props = {

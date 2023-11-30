@@ -20,12 +20,14 @@ import { Tabs, Tab } from "@nextui-org/react";
 
 import Link from "next/link";
 import { signOut, signIn } from "next-auth/react";
-import { Session } from "next-auth";
-type Props = {
-  session: Session | null;
-};
 
-export default function TabsNavbar({ session }: Props) {
+import { useSession } from "next-auth/react";
+
+
+
+export default function TabsNavbar() {
+  const { data: session } = useSession();
+
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
