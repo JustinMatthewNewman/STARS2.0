@@ -22,8 +22,7 @@ import Link from "next/link";
 import { signOut, signIn } from "next-auth/react";
 
 import { useSession } from "next-auth/react";
-
-
+import ProfileMenu from "./ProfileMenu";
 
 export default function TabsNavbar() {
   const { data: session } = useSession();
@@ -88,7 +87,13 @@ export default function TabsNavbar() {
     >
       <NavbarContent className="hidden lg:flex gap-4">
         <NavbarBrand>
-          <Link color="foreground" href="/">
+          <Link color="foreground" href="/" style={{
+          marginLeft: "12px",
+          fontSize: "3rem",
+          fontWeight: "800",
+          fontFamily:
+          "ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji",
+        }}>
             STARS
           </Link>
         </NavbarBrand>
@@ -121,35 +126,14 @@ export default function TabsNavbar() {
             aria-label="Loading..."
           />
         )}
-
+        {!session && (
+          <NavbarItem>
+            <ThemeSwitcher />
+          </NavbarItem>
+        )}
         <NavbarItem>
-          <ThemeSwitcher />
-         
-        </NavbarItem>
-        <NavbarItem>
-        {session ? (
-            <Button
-              className="m-2"
-              color="danger"
-              radius="full"
-              size="md"
-              onPress={() => signOut()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                />
-              </svg>
-            </Button>
+          {session ? (
+            <ProfileMenu session={session} />
           ) : (
             <Button
               className="m-2"

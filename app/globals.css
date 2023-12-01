@@ -25,3 +25,5 @@ body::-webkit-scrollbar-track {
 .overflow-y-auto::-webkit-scrollbar-thumb {
   background-color: transparent; /* Set the color of the thumb (the draggable part of the scrollbar) to transparent */
 }
+
+

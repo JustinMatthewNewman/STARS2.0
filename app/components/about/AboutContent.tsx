@@ -10,11 +10,10 @@ import bgLines from "../../../public/images/background/looper-pattern.svg";
 import AboutText3 from "./AboutText3";
 import AboutImages from "./AboutImages";
 
-
 function AboutContent() {
   return (
     <div>
-      <div  className="container mt-6 max-w-[1400px] md:mt-64">
+      <div className="container mt-6 max-w-[1400px] md:mt-64  items-center justify-center">
         <AboutCards />
         <Image
           fill={true}
@@ -28,21 +27,20 @@ function AboutContent() {
             transform: "scaleX(-1)",
           }}
         />
-         
       </div>
-      <div className="container flex flex-col md:flex-row items-center justify-center gap-4 max-w-[1200px] p-6 mt-12 mb-12">
-      <AboutText3/>
+      <div className="container mt-6 max-w-[1400px] md:mt-64">
+        <AboutText3 />
       </div>
 
-        <div className="container flex flex-col md:flex-row items-center justify-center gap-4 max-w-[1200px] p-6 ">
-          <AboutInfo />
-          <AboutText />
-        </div>
-
-        <div className="container flex flex-col md:flex-row items-center justify-center gap-4 max-w-[1200px] p-6 ">
-          <AboutImages/>
-        </div>
+      {/* <div className="container flex flex-col md:flex-row max-w-[1000px]  mt-6 md:mt-64 items-center justify-center">
+        <AboutInfo />
+        <AboutText />
       </div>
+
+      <div className="container mt-6 max-w-[1400px] md:mt-64">
+        <AboutImages />
+      </div> */}
+    </div>
   );
 }
 

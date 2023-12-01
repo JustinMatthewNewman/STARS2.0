@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutText() {
   return (
-    <div>
+    <div className="m-6">
       <h2
         style={{
           marginLeft: "12px",

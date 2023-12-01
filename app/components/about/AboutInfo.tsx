@@ -22,7 +22,7 @@ export default function AboutInfo() {
   };
 
   return (
-    <Card className="w-full">
+    <Card isBlurred className="w-full">
       <CardHeader className="justify-between">
         <div className="flex gap-5">
           <Avatar
